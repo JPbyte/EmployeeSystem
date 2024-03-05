@@ -20,4 +20,9 @@ public class EmployeeServiceIMPL  implements EmployeeService {
         return EmployeeMapper.mapToEmployeeDTO(saveEmp);
 
     }
+
+    @Override
+    public EmployeeDTO getEmployeeById(Long empId) {
+        return null;
+    }
 }

@@ -4,4 +4,7 @@ import com.example.EmployeeSystem.dto.EmployeeDTO;
 
 public interface EmployeeService {
     EmployeeDTO createEmployee(EmployeeDTO empDTO);
+
+
+    EmployeeDTO getEmployeeById(Long empId);
 }
