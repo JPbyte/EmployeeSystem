@@ -7,6 +7,7 @@ import com.example.EmployeeSystem.mapper.EmployeeMapper;
 import com.example.EmployeeSystem.repository.EmployeeRepository;
 import com.example.EmployeeSystem.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,11 +23,11 @@ public class EmployeeServiceIMPL  implements EmployeeService {
 
     }
 
-    @Override
+    @Override       
     public EmployeeDTO getEmployeeById(Long empId) {
         Employee employee = empRepository.findById(empId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundExcepion("Employee is not exists with given id: " + empId));
-        return EmployeeMapper.mapToEmployeeDTO(emp);
+                        new ResourceNotFoundException("Employee is not exists with given id: " + empId));
+        return EmployeeMapper.mapToEmployeeDTO(employee);
     }
 }
