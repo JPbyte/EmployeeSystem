@@ -10,6 +10,9 @@ import lombok.AllArgsConstructor;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class EmployeeServiceIMPL  implements EmployeeService {
@@ -29,5 +32,12 @@ public class EmployeeServiceIMPL  implements EmployeeService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Employee is not exists with given id: " + empId));
         return EmployeeMapper.mapToEmployeeDTO(employee);
+    }
+
+    @Override
+    public List<EmployeeDTO> getAllEmployee() {
+        List<Employee> emp = empRepository.findAll()
+        return emp.stream().map(EmployeeMapper::mapToEmployeeDTO)
+                .collect(Collectors.toList());
     }
 }
