@@ -36,8 +36,13 @@ public class EmployeeServiceIMPL  implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAllEmployee() {
-        List<Employee> emp = empRepository.findAll()
+        List<Employee> emp = empRepository.findAll();
         return emp.stream().map(EmployeeMapper::mapToEmployeeDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public EmployeeDTO updateEmployee(Long employeeId, EmployeeDTO updateEmp) {
+        
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/employees")
@@ -25,4 +27,11 @@ public class EmployeeController {
         EmployeeDTO empDto = empService.getEmployeeById(empId);
         return ResponseEntity.ok(empDto);
     }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(){
+        List<EmployeeDTO> emp = empService.getAllEmployee();
+        return ResponseEntity.ok(emp);
+    }
+
 }
