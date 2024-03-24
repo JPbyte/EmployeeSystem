@@ -34,4 +34,10 @@ public class EmployeeController {
         return ResponseEntity.ok(emp);
     }
 
+    @PutMapping
+    public ResponseEntity<EmployeeDTO> updateEmployee(Long empId, EmployeeDTO updateEmp){
+        EmployeeDTO empDTO = empService.updateEmployee(empId, updateEmp);
+        return ResponseEntity.ok(empDTO);
+    }
+
 }

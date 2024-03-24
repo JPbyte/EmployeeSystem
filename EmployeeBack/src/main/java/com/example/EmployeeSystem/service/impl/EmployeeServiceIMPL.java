@@ -43,6 +43,16 @@ public class EmployeeServiceIMPL  implements EmployeeService {
 
     @Override
     public EmployeeDTO updateEmployee(Long employeeId, EmployeeDTO updateEmp) {
-        
+        Employee emp = empRepository.findById(employeeId).orElseThrow(
+                () -> new ResourceNotFoundException("Employee is not exists with given id: " + employeeId)
+        );
+
+        emp.setFirstName(updateEmp.getFirstName());
+        emp.setLastName(updateEmp.getLastName());
+        emp.setEmail(updateEmp.getEmail());
+
+        Employee updateEmpObj = empRepository.save(emp);
+
+        return EmployeeMapper.mapToEmployeeDTO(updateEmpObj);
     }
 }
